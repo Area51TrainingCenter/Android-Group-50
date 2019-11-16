@@ -6,4 +6,5 @@
     <string name="lbl_masculino">Masculino</string>
     <string name="lbl_femenino">Femenino</string>
     <string name="lbl_mostrar">Mostrar</string>
+    <string name="lbl_atras">Atras</string>
 </resources>

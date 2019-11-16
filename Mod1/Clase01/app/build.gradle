@@ -6,6 +6,7 @@ android {
     defaultConfig {
         applicationId "com.area51.clase01"
         minSdkVersion 21
+        maxSdkVersion 29
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"

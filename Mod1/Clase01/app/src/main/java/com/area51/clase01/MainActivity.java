@@ -2,6 +2,7 @@ package com.area51.clase01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,12 +52,50 @@ public class MainActivity extends AppCompatActivity {
 
         titulo.setText("Formulario");
 
+        masculino.setChecked(true);
+
         mostrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                //Obtenemos los valores de los componentes
+                String nombreValor = nombre.getText().toString();
+                String apellidoValor = apellido.getText().toString();
+                String edadValor = edad.getSelectedItem().toString();
+                boolean masculinoValor = masculino.isChecked();
+                boolean femeninoValor = femenino.isChecked();
+
+                if (nombreValor.equals("")) {
+                    nombre.setError("El campo es requerido");
+                    return;
+                } else {
+                    nombre.setError(null);
+                }
+                if (apellidoValor.equals("")) {
+                    apellido.setError("El campo es requerido");
+                    return;
+                } else {
+                    apellido.setError(null);
+                }
+
                 Toast.makeText(MainActivity.this,
-                        "Se selecciono", Toast.LENGTH_SHORT).show();
+                        "Nombre: " + nombreValor +
+                                "\nApellido: " + apellidoValor +
+                                "\nEdad: " + edadValor +
+                                "\nGenero: " + (masculinoValor ? "Masculino" :
+                                (femeninoValor ? "Femenino" : "")),
+                        Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this,
+                        DetalleActivity.class);
+
+                intent.putExtra("nombre", nombreValor);
+                intent.putExtra("apellido", apellidoValor);
+                intent.putExtra("edad", edadValor);
+                intent.putExtra("genero", (masculinoValor ? "Masculino" :
+                        (femeninoValor ? "Femenino" : "")));
+
+                startActivity(intent);
 
             }
         });
