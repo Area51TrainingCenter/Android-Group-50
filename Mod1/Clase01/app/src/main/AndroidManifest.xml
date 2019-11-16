@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <!--
+            portrait = vertical
+            landscape = horizontal
+
+            Para cambiar el titulo de la pantalla
+            android:label="@string/lbl_nombre"
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
