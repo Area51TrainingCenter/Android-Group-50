@@ -3,30 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tvCategoria"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="Categoría" />
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvNombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="@string/lbl_nombre" />
+        <TextView
+            android:id="@+id/tvCategoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Categoría" />
 
-    <TextView
-        android:id="@+id/tvDescripcion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="@string/lbl_descripcion" />
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@string/lbl_nombre" />
 
-    <TextView
-        android:id="@+id/tvPublico"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Público" />
+        <TextView
+            android:id="@+id/tvDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@string/lbl_descripcion" />
+
+        <TextView
+            android:id="@+id/tvPublico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Público" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivImagen"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/ic_launcher" />
 </LinearLayout>

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -40,6 +41,11 @@ public class ListadoActivity extends AppCompatActivity {
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Toast toast = Toast.makeText(ListadoActivity.this,
+                        "Ejemplo", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
 
                 //Navegamos al otro activity
                 Intent intent = new Intent(
@@ -84,6 +90,7 @@ public class ListadoActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        //Cerrar el dialogo -> dialogInterface.dismiss();
                         Producto obj = listaProductos.get(posicion);
                         adapter.eliminarObjeto(obj);
                         listaProductos.remove(obj);

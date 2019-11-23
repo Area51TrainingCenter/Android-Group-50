@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.area51.clase02.modelos.Producto;
 
@@ -44,12 +46,27 @@ public class ListadoAdapter extends BaseAdapter {
         TextView nombre = view.findViewById(R.id.tvNombre);
         TextView descripcion = view.findViewById(R.id.tvDescripcion);
         TextView publico = view.findViewById(R.id.tvPublico);
+        ImageView ivImagen=view.findViewById(R.id.ivImagen);
 
         Producto obj = (Producto) getItem(i);
         categoria.setText(obj.getCategoria());
         nombre.setText(obj.getNombre());
         descripcion.setText(obj.getDescripcion());
         publico.setText(String.valueOf(obj.isPublico()));
+
+        ivImagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                /*
+                Dialog
+                GridView
+                Fragmentos
+                 */
+
+                Toast.makeText(context, "Imagen", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         if(!obj.isAccept()){
             descripcion.setVisibility(View.GONE);
