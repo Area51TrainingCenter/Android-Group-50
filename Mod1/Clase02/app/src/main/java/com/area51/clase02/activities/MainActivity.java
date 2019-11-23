@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     descripcion.setError(null);
                 }
 
-                Producto obj=new Producto();
+                Producto obj = new Producto();
                 obj.setNombre(nombreValor);
                 obj.setDescripcion(descripcionValor);
                 obj.setCategoria(categoriaValor);
@@ -97,5 +97,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left);
     }
 }

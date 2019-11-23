@@ -51,6 +51,17 @@ public class ListadoAdapter extends BaseAdapter {
         descripcion.setText(obj.getDescripcion());
         publico.setText(String.valueOf(obj.isPublico()));
 
+        if(!obj.isAccept()){
+            descripcion.setVisibility(View.GONE);
+            publico.setVisibility(View.GONE);
+
+            /*
+            VISIBLE = visible
+            INVISIBLE = invisible
+            GONE = invisible, pero sin ocupar espacio
+             */
+        }
+
         return view;
     }
 }

@@ -13,6 +13,7 @@ import com.area51.clase02.R;
 import com.area51.clase02.modelos.Producto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ListadoActivity extends AppCompatActivity {
     private Button agregar;
@@ -39,6 +40,7 @@ public class ListadoActivity extends AppCompatActivity {
                 Intent intent = new Intent(
                         ListadoActivity.this, MainActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
@@ -48,6 +50,7 @@ public class ListadoActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        Collections.reverse(listaProductos);
         adapter = new ListadoAdapter(listaProductos, this);
         lista.setAdapter(adapter);
     }
