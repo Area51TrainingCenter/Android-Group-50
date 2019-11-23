@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Clase02</string>
+    <string name="lbl_nombre">Nombre</string>
+    <string name="lbl_descripcion">Descripcón</string>
+    <string name="lbl_publico">Público</string>
+    <string name="lbl_privado">Privado</string>
+    <string name="lbl_acepto">Acepto</string>
+    <string name="lbl_registrar">Registrar</string>
+    <string name="lbl_agregar">Agregar</string>
+</resources>
