@@ -64,4 +64,9 @@ public class ListadoAdapter extends BaseAdapter {
 
         return view;
     }
+
+    public void eliminarObjeto(Producto obj) {
+        lista.remove(obj);
+        notifyDataSetChanged();
+    }
 }

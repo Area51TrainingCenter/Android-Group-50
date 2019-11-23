@@ -47,6 +47,30 @@ public class MainActivity extends AppCompatActivity {
         );
         categoria.setAdapter(adapter);
 
+        int posicion = getIntent().getIntExtra("posicion", -1);
+        if (posicion != -1) {
+            Producto obj = ListadoActivity.listaProductos.get(posicion);
+            nombre.setText(obj.getNombre());
+            descripcion.setText(obj.getDescripcion());
+            publico.setChecked(obj.isPublico());
+            privado.setChecked(!obj.isPublico());
+            acepto.setChecked(obj.isAccept());
+
+            for (int i = 0; i < categorias.length; i++) {
+                if (obj.getCategoria().equals(categorias[i])) {
+                    categoria.setSelection(i);
+                    break;
+                }
+            }
+
+            registrar.setTag(posicion);
+            registrar.setText("Modificar");
+        } else {
+
+            registrar.setTag(-1);
+
+        }
+
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,18 +95,32 @@ public class MainActivity extends AppCompatActivity {
                     descripcion.setError(null);
                 }
 
-                Producto obj = new Producto();
-                obj.setNombre(nombreValor);
-                obj.setDescripcion(descripcionValor);
-                obj.setCategoria(categoriaValor);
-                obj.setPublico(publicoValor);
-                obj.setAccept(aceptoValor);
+                int posicion = (int) registrar.getTag();
+                if (posicion == -1) {
+                    Producto obj = new Producto();
+                    obj.setNombre(nombreValor);
+                    obj.setDescripcion(descripcionValor);
+                    obj.setCategoria(categoriaValor);
+                    obj.setPublico(publicoValor);
+                    obj.setAccept(aceptoValor);
 
-                ListadoActivity.listaProductos.add(obj);
+                    ListadoActivity.listaProductos.add(obj);
 
-                Toast.makeText(MainActivity.this,
-                        "Se registro el producto", Toast.LENGTH_SHORT).show();
-                finish();
+                    Toast.makeText(MainActivity.this,
+                            "Se registro el producto", Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    ListadoActivity.listaProductos.get(posicion).setNombre(nombreValor);
+                    ListadoActivity.listaProductos.get(posicion).setAccept(aceptoValor);
+                    ListadoActivity.listaProductos.get(posicion).setPublico(publicoValor);
+                    ListadoActivity.listaProductos.get(posicion).setCategoria(categoriaValor);
+                    ListadoActivity.listaProductos.get(posicion).setDescripcion(descripcionValor);
+
+                    Toast.makeText(MainActivity.this,
+                            "Se actualizo el producto", Toast.LENGTH_SHORT).show();
+                    finish();
+
+                }
 
             }
         });
@@ -102,6 +140,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
+        //Asignamos animación en la transición de pantallas
         overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left);
     }
 }
