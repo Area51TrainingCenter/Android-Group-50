@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegistroActivity">
+
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/lbl_nombre"
+        android:inputType="textPersonName" />
+
+    <Spinner
+        android:id="@+id/spTipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdvImagen1"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdvImagen2"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdvImagen3"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdvImagen4"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_guardar" />
+
+</LinearLayout>
