@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Clase03_1</string>
+    <string name="lbl_usuario">Usuario</string>
+    <string name="lbl_contrasena">Contraseña</string>
+    <string name="lbl_entrar">Entrar</string>
+    <string name="lbl_nuevo">Nuevo</string>
+    <string name="lbl_nombre">Nombre</string>
+    <string name="lbl_clave">Clave</string>
+    <string name="lbl_rep_clave">Rep Clave</string>
+    <string name="lbl_guardar">Guardar</string>
+</resources>
