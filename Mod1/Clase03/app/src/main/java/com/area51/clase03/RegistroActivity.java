@@ -17,7 +17,8 @@ public class RegistroActivity extends AppCompatActivity {
 
     private EditText etNombre;
     private Spinner spTipo;
-    private SimpleDraweeView sdvImagen1, sdvImagen2, sdvImagen3, sdvImagen4;
+    private SimpleDraweeView sdvImagen1, sdvImagen2, sdvImagen3, sdvImagen4,
+            sdvBorde1, sdvBorde2, sdvBorde3, sdvBorde4;
     private Button btnGuardar;
     private String imagen;
 
@@ -34,6 +35,11 @@ public class RegistroActivity extends AppCompatActivity {
         sdvImagen4 = findViewById(R.id.sdvImagen4);
         btnGuardar = findViewById(R.id.btnGuardar);
 
+        sdvBorde1 = findViewById(R.id.sdvBorde1);
+        sdvBorde2 = findViewById(R.id.sdvBorde2);
+        sdvBorde3 = findViewById(R.id.sdvBorde3);
+        sdvBorde4 = findViewById(R.id.sdvBorde4);
+
         sdvImagen1.setImageURI(Uri.parse("res:/" + R.drawable.imagen1));
         sdvImagen2.setImageURI(Uri.parse("res:/" + R.drawable.imagen2));
         sdvImagen3.setImageURI(Uri.parse("res:/" + R.drawable.imagen3));
@@ -49,6 +55,10 @@ public class RegistroActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 imagen = "imagen1";
+                sdvBorde1.setVisibility(View.VISIBLE);
+                sdvBorde2.setVisibility(View.GONE);
+                sdvBorde3.setVisibility(View.GONE);
+                sdvBorde4.setVisibility(View.GONE);
 
             }
         });
@@ -57,6 +67,10 @@ public class RegistroActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 imagen = "imagen2";
+                sdvBorde1.setVisibility(View.GONE);
+                sdvBorde2.setVisibility(View.VISIBLE);
+                sdvBorde3.setVisibility(View.GONE);
+                sdvBorde4.setVisibility(View.GONE);
 
             }
         });
@@ -65,6 +79,10 @@ public class RegistroActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 imagen = "imagen3";
+                sdvBorde1.setVisibility(View.GONE);
+                sdvBorde2.setVisibility(View.GONE);
+                sdvBorde3.setVisibility(View.VISIBLE);
+                sdvBorde4.setVisibility(View.GONE);
 
             }
         });
@@ -73,6 +91,10 @@ public class RegistroActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 imagen = "imagen4";
+                sdvBorde1.setVisibility(View.GONE);
+                sdvBorde2.setVisibility(View.GONE);
+                sdvBorde3.setVisibility(View.GONE);
+                sdvBorde4.setVisibility(View.VISIBLE);
 
             }
         });

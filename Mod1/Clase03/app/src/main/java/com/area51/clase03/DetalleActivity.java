@@ -18,5 +18,8 @@ public class DetalleActivity extends AppCompatActivity {
         ImagenGaleriaAdapter adapter =
                 new ImagenGaleriaAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
+
+        int posicion = getIntent().getIntExtra("posicion", 0);
+        viewPager.setCurrentItem(posicion);
     }
 }

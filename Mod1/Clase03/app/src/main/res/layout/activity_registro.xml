@@ -25,25 +25,73 @@
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal">
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/sdvImagen1"
-            android:layout_width="80dp"
-            android:layout_height="80dp" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/sdvImagen2"
-            android:layout_width="80dp"
-            android:layout_height="80dp" />
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/sdvImagen1"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/sdvImagen3"
-            android:layout_width="80dp"
-            android:layout_height="80dp" />
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/sdvBorde1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:visibility="gone"
+                app:backgroundImage="@drawable/rectangle" />
+        </FrameLayout>
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/sdvImagen4"
-            android:layout_width="80dp"
-            android:layout_height="80dp" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/sdvImagen2"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/sdvBorde2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:visibility="gone"
+                app:backgroundImage="@drawable/rectangle" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/sdvImagen3"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/sdvBorde3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:visibility="gone"
+                app:backgroundImage="@drawable/rectangle" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/sdvImagen4"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/sdvBorde4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:visibility="gone"
+                app:backgroundImage="@drawable/rectangle" />
+        </FrameLayout>
     </LinearLayout>
 
     <Button

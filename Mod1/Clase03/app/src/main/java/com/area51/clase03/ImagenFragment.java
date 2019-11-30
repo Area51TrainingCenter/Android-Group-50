@@ -1,6 +1,7 @@
 package com.area51.clase03;
 
 
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -43,6 +44,8 @@ public class ImagenFragment extends Fragment {
 
         tvNombre = view.findViewById(R.id.tvNombre);
         sdvImagen = view.findViewById(R.id.sdvImagen);
+
+        //tvNombre.setTypeface(Typeface.createFromAsset(,"fonts/arial.ttf"));
 
         int posicion = getArguments().getInt("posicion");
         Imagen obj = MainActivity.lista.get(posicion);
