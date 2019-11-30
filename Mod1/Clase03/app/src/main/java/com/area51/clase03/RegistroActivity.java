@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -18,6 +19,7 @@ public class RegistroActivity extends AppCompatActivity {
     private Spinner spTipo;
     private SimpleDraweeView sdvImagen1, sdvImagen2, sdvImagen3, sdvImagen4;
     private Button btnGuardar;
+    private String imagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +39,43 @@ public class RegistroActivity extends AppCompatActivity {
         sdvImagen3.setImageURI(Uri.parse("res:/" + R.drawable.imagen3));
         sdvImagen4.setImageURI(Uri.parse("res:/" + R.drawable.imagen4));
 
-
         ArrayAdapter adapter = new ArrayAdapter(
                 this, android.R.layout.simple_spinner_dropdown_item,
                 getResources().getStringArray(R.array.tipos));
         spTipo.setAdapter(adapter);
+
+        sdvImagen1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                imagen = "imagen1";
+
+            }
+        });
+        sdvImagen2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                imagen = "imagen2";
+
+            }
+        });
+        sdvImagen3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                imagen = "imagen3";
+
+            }
+        });
+        sdvImagen4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                imagen = "imagen4";
+
+            }
+        });
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,8 +83,33 @@ public class RegistroActivity extends AppCompatActivity {
 
                 String nombre = etNombre.getText().toString();
                 String tipo = spTipo.getSelectedItem().toString();
-                
 
+                if (nombre.equals("")) {
+                    etNombre.setError("El campo es requerido");
+                    return;
+                } else {
+                    etNombre.setError(null);
+                }
+                Imagen obj = new Imagen();
+                obj.setNombre(nombre);
+                obj.setTipo(tipo);
+
+                int res = 0;
+                if (imagen.equals("imagen1"))
+                    res = R.drawable.imagen1;
+                else if (imagen.equals("imagen2"))
+                    res = R.drawable.imagen2;
+                else if (imagen.equals("imagen3"))
+                    res = R.drawable.imagen3;
+                else if (imagen.equals("imagen4"))
+                    res = R.drawable.imagen4;
+
+                obj.setUrl("res:/" + res);
+
+                MainActivity.lista.add(obj);
+                Toast.makeText(RegistroActivity.this,
+                        "Se registro", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }
