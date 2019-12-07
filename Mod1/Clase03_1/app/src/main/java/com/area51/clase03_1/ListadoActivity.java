@@ -28,4 +28,13 @@ public class ListadoActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        UsuarioAdapter adapter =
+                new UsuarioAdapter(this, AndroidApplication.lista);
+        lvLista.setAdapter(adapter);
+    }
 }

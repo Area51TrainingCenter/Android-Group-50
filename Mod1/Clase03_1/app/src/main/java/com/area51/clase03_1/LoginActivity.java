@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etUsuario, etContrasena;
@@ -25,8 +28,30 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(LoginActivity.this, ListadoActivity.class);
-                startActivity(intent);
+                String usuarioValor = etUsuario.getText().toString();
+                String clave = etContrasena.getText().toString();
+
+                ArrayList<Usuario> lista = AndroidApplication.lista;
+                Usuario obj = null;
+                if (lista.size() > 0) {
+                    for (Usuario usuario : lista) {
+                        if (usuarioValor.equals(usuario.getUsuario()) &&
+                                clave.equals(usuario.getContrasena())) {
+                            obj = usuario;
+                            break;
+                        }
+                    }
+                    if (obj == null) {
+                        Toast.makeText(LoginActivity.this,
+                                "Usuario no existe", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Intent intent = new Intent(LoginActivity.this, ListadoActivity.class);
+                        startActivity(intent);
+                    }
+                } else {
+                    Toast.makeText(LoginActivity.this,
+                            "Usuario no existe", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
