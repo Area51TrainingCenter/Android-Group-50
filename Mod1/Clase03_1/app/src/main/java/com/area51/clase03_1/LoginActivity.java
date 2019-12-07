@@ -3,6 +3,7 @@ package com.area51.clase03_1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,8 +46,18 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this,
                                 "Usuario no existe", Toast.LENGTH_SHORT).show();
                     } else {
+                        SharedPreferences.Editor editor =
+                                getSharedPreferences("clase04", MODE_PRIVATE).edit();
+                        editor.putString("usuario", obj.getUsuario());
+                        editor.putString("nombre", obj.getNombre());
+                        editor.apply();
+
                         Intent intent = new Intent(LoginActivity.this, ListadoActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
+                        finish();
                     }
                 } else {
                     Toast.makeText(LoginActivity.this,

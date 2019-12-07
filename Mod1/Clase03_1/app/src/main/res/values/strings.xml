@@ -8,4 +8,5 @@
     <string name="lbl_clave">Clave</string>
     <string name="lbl_rep_clave">Rep Clave</string>
     <string name="lbl_guardar">Guardar</string>
+    <string name="lbl_cerrar">Cerrar</string>
 </resources>
