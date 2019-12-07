@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,6 +27,17 @@ public class LoginActivity extends AppCompatActivity {
         etUsuario = findViewById(R.id.etUsuario);
         etContrasena = findViewById(R.id.etContrasena);
         btnEntrar = findViewById(R.id.btnEntrar);
+
+        etContrasena.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if(i== EditorInfo.IME_ACTION_DONE){
+                    btnEntrar.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
 
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override

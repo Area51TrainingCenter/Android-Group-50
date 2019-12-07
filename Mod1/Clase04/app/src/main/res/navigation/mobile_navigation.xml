@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_listado">
+
+    <fragment
+        android:id="@+id/nav_listado"
+        android:name="com.area51.clase04.ui.listado.ListadoFragment"
+        android:label="@string/menu_listado"
+        tools:layout="@layout/fragment_listado" />
+
+    <fragment
+        android:id="@+id/nav_grilla"
+        android:name="com.area51.clase04.ui.grilla.GrillaFragment"
+        android:label="@string/menu_grilla"
+        tools:layout="@layout/fragment_grilla" />
+
+    <fragment
+        android:id="@+id/nav_registro_listado"
+        android:name="com.area51.clase04.ui.registro_listado.RegistroListadoFragment"
+        android:label="@string/menu_registro_listado"
+        tools:layout="@layout/fragment_registro_listado" />
+
+    <fragment
+        android:id="@+id/nav_registro_grilla"
+        android:name="com.area51.clase04.ui.registro_grilla.RegistroGrillaFragment"
+        android:label="@string/menu_registro_grilla"
+        tools:layout="@layout/fragment_registor_grilla" />
+
+    <fragment
+        android:id="@+id/nav_registro_tipo"
+        android:name="com.area51.clase04.ui.registro_tipo.RegistroTipoFragment"
+        android:label="@string/menu_registro_tipo"
+        tools:layout="@layout/fragment_registro_tipo" />
+</navigation>
