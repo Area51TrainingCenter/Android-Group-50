@@ -23,11 +23,17 @@ public class SentenciaSQL {
 
     public void eliminar(String id) {
         Realm realm = Realm.getDefaultInstance();
-        Persona persona = realm.where(Persona.class)
-                .equalTo("id", id)
-                .equalTo("nombre", "johann")
-                .findFirst();
-        if (persona != null)
-            persona.deleteFromRealm();
+        try {
+            realm.beginTransaction();
+            Persona persona = realm.where(Persona.class)
+                    .equalTo("id", id)
+                    //.equalTo("nombre", "johann")
+                    .findFirst();
+            if (persona != null)
+                persona.deleteFromRealm();
+            realm.commitTransaction();
+        } catch (Exception e) {
+            realm.cancelTransaction();
+        }
     }
 }
