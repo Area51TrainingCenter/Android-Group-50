@@ -14,6 +14,18 @@ public class SentenciaSQL {
         manageSQL = new ManageSQL(context);
     }
 
+    public void registrar(Persona persona) {
+
+        SQLiteDatabase db = manageSQL.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("nombre", persona.getNombre());
+        values.put("apellido", persona.getApellido());
+        values.put("edad", persona.getEdad());
+        values.put("direccion", persona.getDireccion());
+        db.insert("persona", null, values);
+    }
+
     public void registrar(String nombre, String apellido,
                           String edad, String direccion) {
 
