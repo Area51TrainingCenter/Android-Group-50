@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class RegistroActivity extends AppCompatActivity {
     private TextInputEditText etNombre, etApellido, etEdad, etDireccion;
     private Button btnAgregar;
+    private FrameLayout progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +28,12 @@ public class RegistroActivity extends AppCompatActivity {
         etEdad = findViewById(R.id.etEdad);
         etDireccion = findViewById(R.id.etDireccion);
         btnAgregar = findViewById(R.id.btnAgregar);
+        progress = findViewById(R.id.progress);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //TODO habilitar progress
+        //progress.setVisibility(View.VISIBLE);
 
         if (getIntent().hasExtra("item")) {
             Persona item = getIntent().getParcelableExtra("item");
