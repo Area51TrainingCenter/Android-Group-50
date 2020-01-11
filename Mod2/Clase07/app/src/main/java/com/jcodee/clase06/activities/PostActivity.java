@@ -5,18 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
 import com.jcodee.clase06.R;
+import com.jcodee.clase06.Reusable;
 import com.jcodee.clase06.adapters.PostAdapter;
+import com.jcodee.clase06.database.post.PostEntidad;
+import com.jcodee.clase06.database.usuarios.MetodoSQL;
 import com.jcodee.clase06.net.response.post.Post;
 import com.jcodee.clase06.net.RetrofitConfiguracion;
 import com.jcodee.clase06.net.RetrofitServicios;
 
 import java.util.ArrayList;
 
+import io.realm.RealmResults;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,30 +46,60 @@ public class PostActivity extends AppCompatActivity {
 
         int userId = getIntent().getIntExtra("id", 0);
 
-        Call<ArrayList<Post>> call = servicios.obtenerPostPorUsuario(userId);
-        call.enqueue(new Callback<ArrayList<Post>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Post>> call,
-                                   Response<ArrayList<Post>> response) {
+        MetodoSQL metodoSQL = new MetodoSQL();
+        if (Reusable.isOnline()) {
+            Call<ArrayList<Post>> call = servicios.obtenerPostPorUsuario(userId);
+            call.enqueue(new Callback<ArrayList<Post>>() {
+                @Override
+                public void onResponse(Call<ArrayList<Post>> call,
+                                       Response<ArrayList<Post>> response) {
 
-                ArrayList<Post> list = response.body();
-                adapter = new PostAdapter(PostActivity.this, list);
-                rvDatos.setLayoutManager(new LinearLayoutManager(PostActivity.this));
-                rvDatos.setAdapter(adapter);
+                    ArrayList<Post> list = response.body();
 
-                Log.d("clase_log", response.toString());
+                    if (list != null && list.size() > 0) {
+                        for (Post post : list) {
+                            PostEntidad entidad = new PostEntidad();
+                            entidad.setTitulo(post.getTitle());
+                            entidad.setCuerpo(post.getBody());
+                            entidad.setIdUsuario(userId);
+                            metodoSQL.registrarPost(entidad);
+                        }
+                    }
+/*
+                    Intent intent=new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("geo:"+ latitude + "," + longitude));
+                    startActivity(intent);
+*/
+                    adapter = new PostAdapter(PostActivity.this, list);
+                    rvDatos.setLayoutManager(new LinearLayoutManager(PostActivity.this));
+                    rvDatos.setAdapter(adapter);
+
+                    Log.d("clase_log", response.toString());
+                }
+
+                @Override
+                public void onFailure(Call<ArrayList<Post>> call, Throwable t) {
+
+                }
+            });
+        } else {
+            ArrayList<Post> list = new ArrayList<>();
+            RealmResults<PostEntidad> posts = metodoSQL.obtenerPost(userId);
+            for (PostEntidad item : posts) {
+                Post post = new Post();
+                post.setTitle(item.getTitulo());
+                post.setBody(item.getCuerpo());
+                list.add(post);
             }
-
-            @Override
-            public void onFailure(Call<ArrayList<Post>> call, Throwable t) {
-
-            }
-        });
+            adapter = new PostAdapter(PostActivity.this, list);
+            rvDatos.setLayoutManager(new LinearLayoutManager(PostActivity.this));
+            rvDatos.setAdapter(adapter);
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 break;
