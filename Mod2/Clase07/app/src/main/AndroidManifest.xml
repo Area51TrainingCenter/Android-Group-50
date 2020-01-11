@@ -3,6 +3,7 @@
     package="com.jcodee.clase06">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.PostActivity"></activity>
+        <activity android:name=".activities.ImagenActivity"></activity>
+        <activity android:name=".activities.AlbunesActivity" />
+        <activity android:name=".activities.PostActivity" />
         <activity android:name=".activities.DetalleActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
