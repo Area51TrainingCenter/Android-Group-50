@@ -1,4 +1,4 @@
-package com.jcodee.clase06;
+package com.jcodee.clase06.net.response.usuario;
 
 import android.os.Parcel;
 import android.os.Parcelable;

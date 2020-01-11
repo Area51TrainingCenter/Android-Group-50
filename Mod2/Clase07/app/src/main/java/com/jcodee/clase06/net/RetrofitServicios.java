@@ -1,4 +1,10 @@
-package com.jcodee.clase06;
+package com.jcodee.clase06.net;
+
+import com.jcodee.clase06.net.response.usuario.Usuario;
+import com.jcodee.clase06.net.response.album.Album;
+import com.jcodee.clase06.net.response.comentario.Comentario;
+import com.jcodee.clase06.net.response.foto.Foto;
+import com.jcodee.clase06.net.response.post.Post;
 
 import java.util.ArrayList;
 

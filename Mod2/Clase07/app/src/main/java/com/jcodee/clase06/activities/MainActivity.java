@@ -1,7 +1,6 @@
-package com.jcodee.clase06;
+package com.jcodee.clase06.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,6 +8,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
+
+import com.jcodee.clase06.R;
+import com.jcodee.clase06.net.response.usuario.Usuario;
+import com.jcodee.clase06.adapters.UsuarioAdapter;
+import com.jcodee.clase06.net.RetrofitConfiguracion;
+import com.jcodee.clase06.net.RetrofitServicios;
 
 import java.util.ArrayList;
 

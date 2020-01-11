@@ -1,4 +1,4 @@
-package com.jcodee.clase06;
+package com.jcodee.clase06.net.response.post;
 
 public class Post {
     private String userId;

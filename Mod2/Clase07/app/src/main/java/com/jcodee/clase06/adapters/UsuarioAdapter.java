@@ -1,4 +1,4 @@
-package com.jcodee.clase06;
+package com.jcodee.clase06.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.jcodee.clase06.R;
+import com.jcodee.clase06.net.response.usuario.Usuario;
+import com.jcodee.clase06.activities.DetalleActivity;
 
 import java.util.ArrayList;
 

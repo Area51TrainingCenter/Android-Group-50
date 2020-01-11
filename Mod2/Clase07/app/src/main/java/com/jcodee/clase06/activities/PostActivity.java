@@ -1,9 +1,14 @@
-package com.jcodee.clase06;
+package com.jcodee.clase06.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+
+import com.jcodee.clase06.R;
+import com.jcodee.clase06.net.response.post.Post;
+import com.jcodee.clase06.net.RetrofitConfiguracion;
+import com.jcodee.clase06.net.RetrofitServicios;
 
 import java.util.ArrayList;
 

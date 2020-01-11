@@ -1,4 +1,4 @@
-package com.jcodee.clase06;
+package com.jcodee.clase06.net.response.album;
 
 public class Album {
     private int userId;

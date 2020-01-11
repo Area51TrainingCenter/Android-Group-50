@@ -1,4 +1,4 @@
-package com.jcodee.clase06;
+package com.jcodee.clase06.net.response.comentario;
 
 public class Comentario {
     private int postId;
