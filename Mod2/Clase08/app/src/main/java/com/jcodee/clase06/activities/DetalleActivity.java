@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -44,13 +46,27 @@ public class DetalleActivity extends AppCompatActivity implements EasyPermission
         setTitle("Detalle");
 
         Usuario usuario = getIntent().getParcelableExtra("usuario");
-        tvUsuario.setText(usuario.getUsername());
-        tvCompania.setText(usuario.getCompany().getName());
-        tvPaginaWeb.setText(usuario.getWebsite());
-        tvEmail.setText(usuario.getEmail());
-        tvDireccion.setText(usuario.getAddress().getCity());
-        tvNombre.setText(usuario.getName());
-        tvCelular.setText(usuario.getPhone());
+        tvUsuario.setText(Html.fromHtml(
+                getString(R.string.template_usuario, usuario.getUsername())
+        ));
+        tvCompania.setText(Html.fromHtml(
+                getString(R.string.template_compania, usuario.getCompany().getName())
+        ));
+        tvPaginaWeb.setText(Html.fromHtml(
+                getString(R.string.template_pagina_web, usuario.getWebsite())
+        ));
+        tvEmail.setText(Html.fromHtml(
+                getString(R.string.template_email, usuario.getEmail())
+        ));
+        tvDireccion.setText(Html.fromHtml(
+                getString(R.string.template_direccion, usuario.getAddress().getCity())
+        ));
+        tvNombre.setText(Html.fromHtml(
+                getString(R.string.template_nombre, usuario.getName())
+        ));
+        tvCelular.setText(Html.fromHtml(
+                getString(R.string.template_celular, usuario.getPhone())
+        ));
 
         tvCelular.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +110,7 @@ public class DetalleActivity extends AppCompatActivity implements EasyPermission
                 startActivity(Intent.createChooser(intent, "Correo"));
             }
         });
+
     }
 
     @Override

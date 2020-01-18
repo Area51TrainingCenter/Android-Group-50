@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Clase06</string>
     <string name="call_required">El permiso de llamada es requerido</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="template_nombre"><![CDATA[Nombre: <b>%1$s</b>]]></string>
+    <string name="template_celular"><![CDATA[Celular: <b>%1$s</b>]]></string>
+    <string name="template_direccion"><![CDATA[Dirección: <b>%1$s</b>]]></string>
+    <string name="template_usuario"><![CDATA[Usuario: <b>%1$s</b>]]></string>
+    <string name="template_compania"><![CDATA[Compañia: <b>%1$s</b>]]></string>
+    <string name="template_pagina_web"><![CDATA[Página Web: <b>%1$s</b>]]></string>
+    <string name="template_email"><![CDATA[Email: <b>%1$s</b>]]></string>
 </resources>

@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 
 import com.jcodee.clase06.R;
@@ -34,6 +36,8 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rvDatos;
     private FrameLayout flCargando;
+    private EditText etBuscar;
+    private Button btnBuscar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +46,54 @@ public class MainActivity extends AppCompatActivity {
 
         rvDatos = findViewById(R.id.rvDatos);
         flCargando = findViewById(R.id.flCargando);
+        etBuscar = findViewById(R.id.etBuscar);
+        btnBuscar = findViewById(R.id.btnBuscar);
 
         flCargando.setVisibility(View.VISIBLE);
+
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String textoBuscar = etBuscar.getText().toString();
+
+                MetodoSQL metodoSQL = new MetodoSQL();
+                RealmResults<UsuarioEntidad> usuarios = metodoSQL.obtenerUsuarioPorNombre(textoBuscar);
+
+                ArrayList<Usuario> lista = new ArrayList<>();
+                if (usuarios != null && usuarios.size() > 0) {
+                    for (UsuarioEntidad entidad : usuarios) {
+                        Usuario usuario = new Usuario();
+                        usuario.setId(entidad.getIdData());
+                        usuario.setEmail(entidad.getCorreo());
+                        usuario.setPhone(entidad.getCelular());
+                        usuario.setName(entidad.getNombre());
+                        usuario.setWebsite(entidad.getWeb());
+
+                        Compania compania = new Compania();
+                        compania.setName(entidad.getCompania().getNombre());
+                        usuario.setCompany(compania);
+
+                        Direccion direccion = new Direccion();
+                        direccion.setCity(entidad.getDireccion().getDireccion());
+                        Geolocalizacion geolocalizacion = new Geolocalizacion();
+                        geolocalizacion.setLat(entidad.getDireccion()
+                                .getGeolocalizacion().getLatitud());
+                        geolocalizacion.setLng(entidad.getDireccion()
+                                .getGeolocalizacion().getLongitud());
+                        direccion.setGeo(geolocalizacion);
+                        usuario.setAddress(direccion);
+
+                        lista.add(usuario);
+                    }
+                }
+
+                UsuarioAdapter adapter =
+                        new UsuarioAdapter(MainActivity.this, lista);
+                rvDatos.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                rvDatos.setAdapter(adapter);
+                flCargando.setVisibility(View.GONE);
+            }
+        });
 
         if (Reusable.isOnline()) {
             RetrofitServicios servicios =
