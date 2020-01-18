@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Clase06</string>
+    <string name="call_required">El permiso de llamada es requerido</string>
+</resources>
