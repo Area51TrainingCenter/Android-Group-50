@@ -24,7 +24,7 @@ public class UbicacionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         lista = new ArrayList<>();
     }
 
-    public void agregar(ArrayList<Ubicacion> datos){
+    public void agregar(ArrayList<Ubicacion> datos) {
         lista.clear();
         lista.addAll(datos);
         notifyDataSetChanged();
@@ -40,12 +40,13 @@ public class UbicacionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             tvUbicacion = itemView.findViewById(R.id.tvDireccion);
         }
 
-        public void bind(Ubicacion ubicacion) {
+        public void bind(final Ubicacion ubicacion) {
             tvUbicacion.setText(ubicacion.getDireccion());
             contenedor.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, DetalleActivity.class);
+                    intent.putExtra("item", ubicacion);
                     context.startActivity(intent);
                 }
             });
