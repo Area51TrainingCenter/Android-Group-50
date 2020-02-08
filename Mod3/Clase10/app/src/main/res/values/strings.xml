@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Clase10</string>
     <string name="location">El permiso es requerido</string>
+    <string name="camera">El permiso de camara es requerido</string>
 </resources>

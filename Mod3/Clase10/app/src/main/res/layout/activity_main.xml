@@ -6,11 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnUbicacion"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Ubicación" />
+        android:gravity="center"
+        android:orientation="vertical">
 
+        <Button
+            android:id="@+id/btnUbicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ubicación" />
+
+        <Button
+            android:id="@+id/btnCamara"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Camara" />
+
+        <ImageView
+            android:id="@+id/ivImagen"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+    </LinearLayout>
 </FrameLayout>
