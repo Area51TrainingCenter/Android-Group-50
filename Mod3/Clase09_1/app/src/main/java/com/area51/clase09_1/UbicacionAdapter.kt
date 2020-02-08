@@ -1,6 +1,7 @@
 package com.area51.clase09_1
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,14 @@ class UbicacionAdapter(val context: Context) :
     inner class UbicacionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(ubicacion: Ubicacion) {
             itemView.tvDireccion.text = ubicacion.direccion
+
+            itemView.contenedor.setOnClickListener {
+                val intent = Intent(context, MapsActivity::class.java)
+                intent.putExtra("latitud", ubicacion.latitud)
+                intent.putExtra("longitud", ubicacion.longitud)
+                intent.putExtra("direccion", ubicacion.direccion)
+                context.startActivity(intent)
+            }
         }
     }
 
